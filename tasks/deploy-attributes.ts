@@ -7,7 +7,7 @@ import path from "path";
 task("deploy-attributes", "Deploys all attribute contracts").setAction(
   async (args, env) => {
     try {
-      const attributes = ["backgrounds"];
+      const attributes = ["Background", "Face"];
       const promises = attributes.map((attribute) => {
         return deploy({ attribute }, env);
       });
@@ -51,16 +51,16 @@ const readJSON = (attribute: string) => {
 };
 
 async function deploy(args: any, { ethers }: HardhatRuntimeEnvironment) {
-  const ContractDeployer = await ethers.getContractFactory("SmileAttribute");
+  const ContractDeployer = await ethers.getContractFactory("SmileyAttribute");
 
-  const backgroundData = readJSON("Background");
-  const smileAttribute = await ContractDeployer.deploy(...backgroundData);
+  const backgroundData = readJSON(args.attribute);
+  const smileyAttribute = await ContractDeployer.deploy(...backgroundData);
 
-  await smileAttribute.deployed();
+  await smileyAttribute.deployed();
 
   console.log(
-    `Contract ${args.attribute} deployed to: ${smileAttribute.address}`
+    `Contract ${args.attribute} deployed to: ${smileyAttribute.address}`
   );
 
-  return smileAttribute.address;
+  return smileyAttribute.address;
 }

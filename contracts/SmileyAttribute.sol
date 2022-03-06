@@ -79,7 +79,7 @@ contract SmileyAttribute is ISmileyAttribute {
     uint80 pick = 0;
 
     for (uint80 i = 0; i < weights.length; i++) {
-      if (weights[i] < previousSum + randomNumber) {
+      if (randomNumber < previousSum + weights[i]) {
         pick = i;
         break;
       }
