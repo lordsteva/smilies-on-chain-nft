@@ -13,3 +13,5 @@ artifacts
 .openzeppelin
 
 **/.DS_Store
+
+typechain-types/*
