@@ -7,7 +7,14 @@ import path from "path";
 task("deploy-attributes", "Deploys all attribute contracts").setAction(
   async (args, env) => {
     try {
-      const attributes = ["Background", "Face", "Eyes"];
+      const attributes = [
+        "Background",
+        "Face",
+        "Eyes",
+        "Mouth",
+        "Hat",
+        "Moustache",
+      ];
       const promises = attributes.map((attribute) => {
         return deploy({ attribute }, env);
       });

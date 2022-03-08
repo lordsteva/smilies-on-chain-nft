@@ -103,7 +103,7 @@ contract SmileyNFT is ERC721, Ownable {
         }
         data = string(
             abi.encodePacked(
-                '<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">',
+                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">',
                 data,
                 "</svg>"
             )
