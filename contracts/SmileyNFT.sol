@@ -7,8 +7,9 @@ import "./interfaces/ISmileyAttribute.sol";
 import {Base64} from "base64-sol/base64.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
+import "./interfaces/ISmileyNFT.sol";
 
-contract SmileyNFT is ERC721, Ownable {
+contract SmileyNFT is ISmileyNFT, ERC721, Ownable {
     //counter for incremental token ids
     using Counters for Counters.Counter;
     //allows usage of toString
@@ -118,13 +119,43 @@ contract SmileyNFT is ERC721, Ownable {
     }
 
     //creates a new NFT
-    function mint() public minterOnly returns (uint256) {
+    function mint() public override minterOnly returns (uint256) {
         _tokenIds.increment();
         uint256 newItemId = _tokenIds.current();
         _mint(msg.sender, newItemId);
         for (uint16 i = 0; i < attributes.length; i++) {
             metadata[newItemId].push(attributes[i].pickRandomValue());
         }
+        emit SmileyMinted(newItemId);
+
         return newItemId;
+    }
+
+    //allow owner to set minter contract
+    function setMinter(address _minter) external override onlyOwner {
+        minter = _minter;
+    }
+
+    //change the implementation of an attribute contract
+    function changeAttributeContract(address newContract, uint256 index)
+        external
+        override
+        onlyOwner
+    {
+        attributes[index] = ISmileyAttribute(newContract);
+    }
+
+    function getPoints(uint256 tokenId)
+        external
+        view
+        override
+        returns (uint256)
+    {
+        uint256 points = 0;
+        uint80[] memory smileyMetadata = metadata[tokenId];
+        for (uint256 i = 0; i < attributes.length; i++) {
+            points += attributes[i].getPoints(smileyMetadata[i]);
+        }
+        return points;
     }
 }
