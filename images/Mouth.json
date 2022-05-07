@@ -83,7 +83,7 @@
   },
   {
     "value": "Gradient 4",
-    "svg": "<linearGradient id=\"mo\" x1=\"0%\" y1=\"50%\" x2=\"100%\" y2=\"50%\"><stop offset=\"0%\" style=\"stop-color:#ff9800;stop-opacity:1\"/><stop offset=\"100%\" style=\"stop-color:#00bcd4;stop-opacity:1\"/></linearGradient></defs><path d=\"M300 600a1 1 0 0 0 400 0\" fill=\"url(#mo)\" stroke=\"#000\"/><path stroke=\"#000\" d=\"M300 600h400\"/>",
+    "svg": "<defs><linearGradient id=\"mo\" x1=\"0%\" y1=\"50%\" x2=\"100%\" y2=\"50%\"><stop offset=\"0%\" style=\"stop-color:#ff9800;stop-opacity:1\"/><stop offset=\"100%\" style=\"stop-color:#00bcd4;stop-opacity:1\"/></linearGradient></defs><path d=\"M300 600a1 1 0 0 0 400 0\" fill=\"url(#mo)\" stroke=\"#000\"/><path stroke=\"#000\" d=\"M300 600h400\"/>",
     "points": 1,
     "weight": 1
   },

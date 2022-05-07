@@ -1,43 +1,8 @@
 import "@nomiclabs/hardhat-ethers";
 import fs from "fs";
 import { task } from "hardhat/config";
-import { HardhatRuntimeEnvironment } from "hardhat/types";
+import { ActionType, HardhatRuntimeEnvironment } from "hardhat/types";
 import path from "path";
-
-task("deploy-attributes", "Deploys all attribute contracts").setAction(
-  async (args, env) => {
-    try {
-      const attributes = [
-        "Background",
-        "Face",
-        "Eyes",
-        "Mouth",
-        "Hat",
-        "Moustache",
-      ];
-      const promises = attributes.map((attribute) => {
-        return deploy({ attribute }, env);
-      });
-
-      const contracts = await Promise.all(promises);
-
-      try {
-        fs.writeFileSync(
-          path.resolve(
-            __dirname,
-            `../addresses/attribute-contracts-${env.network.name}.json`
-          ),
-          JSON.stringify(contracts)
-        );
-      } catch (err) {
-        console.error(err);
-      }
-    } catch (e) {
-      console.error(e);
-      process.exitCode = 1;
-    }
-  }
-);
 
 const readJSON = (attribute: string) => {
   const rawdata = fs.readFileSync(`./images/${attribute}.json`);
@@ -61,6 +26,7 @@ async function deploy(args: any, { ethers }: HardhatRuntimeEnvironment) {
   const ContractDeployer = await ethers.getContractFactory("SmileyAttribute");
 
   const backgroundData = readJSON(args.attribute);
+  // @ts-ignore
   const smileyAttribute = await ContractDeployer.deploy(...backgroundData);
 
   await smileyAttribute.deployed();
@@ -71,3 +37,40 @@ async function deploy(args: any, { ethers }: HardhatRuntimeEnvironment) {
 
   return smileyAttribute.address;
 }
+
+export const deployAttributes: ActionType<any> = async (args, env) => {
+  try {
+    const attributes = [
+      "Background",
+      "Face",
+      "Eyes",
+      "Mouth",
+      "Hat",
+      "Moustache",
+    ];
+    const promises = attributes.map((attribute) => {
+      return deploy({ attribute }, env);
+    });
+
+    const contracts = await Promise.all(promises);
+
+    try {
+      fs.writeFileSync(
+        path.resolve(
+          __dirname,
+          `../addresses/attribute-contracts-${env.network.name}.json`
+        ),
+        JSON.stringify(contracts)
+      );
+    } catch (err) {
+      console.error(err);
+    }
+  } catch (e) {
+    console.error(e);
+    process.exitCode = 1;
+  }
+};
+
+task("deploy-attributes", "Deploys all attribute contracts").setAction(
+  deployAttributes
+);
