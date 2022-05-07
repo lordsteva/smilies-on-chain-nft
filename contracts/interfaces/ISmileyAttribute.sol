@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
-
 interface ISmileyAttribute {
     //returns name of the attributte
     function getAttributeName() external view returns (string memory);
