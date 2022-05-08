@@ -1,5 +1,6 @@
 import "@nomiclabs/hardhat-ethers";
 import fs from "fs";
+import { ethers } from "hardhat";
 import { task } from "hardhat/config";
 import { ActionType } from "hardhat/types";
 import path from "path";
@@ -27,12 +28,13 @@ export const deployAuction: ActionType<any> = async (args, env) => {
     const timelockContract: string = JSON.parse(timelockContractDataString)[0];
 
     // todo update values
-    const extend = 30;
+    const extend = env.network.name === "rinkeby" ? 30 * 60 : 30;
     // check this todo
-    const minPrice = 1;
+    const minPrice =
+      env.network.name === "rinkeby" ? ethers.utils.parseEther("0.01") : 1;
 
     const bidInc = 5;
-    const duration = 600;
+    const duration = env.network.name === "rinkeby" ? 4 * 60 * 60 : 600;
 
     const contract = await SmileyAuction.deploy(
       nftContract,
