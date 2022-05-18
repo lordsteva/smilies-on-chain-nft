@@ -1,6 +1,7 @@
 import { ethers } from "ethers";
 import { FC, useState } from "react";
 import ABI from "../ABI/SmileyGovernor.json";
+import { wrapTransactionWithToast } from "../toast";
 import { useWallet } from "../wallet/WalletContext";
 import ConnectWallet from "./ConnectWallet";
 import CreateProposalTransaction from "./CreateProposalTransaction";
@@ -120,7 +121,8 @@ const CreateProposal: FC = () => {
                 calldatas,
                 description
               );
-              await proposeTx.wait();
+              await wrapTransactionWithToast(proposeTx);
+              location.reload();
             }}
           >
             Propose

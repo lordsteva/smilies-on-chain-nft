@@ -1,7 +1,7 @@
 import { BigNumber, Contract, ethers } from "ethers";
 import { FC, useCallback, useEffect, useRef, useState } from "react";
-import { toast } from "react-toastify";
 import ABI from "../ABI/SmileyAuction.json";
+import { wrapTransactionWithToast } from "../toast";
 import { useWallet } from "../wallet/WalletContext";
 import { useAuctionEvents } from "./AuctionEventsContext";
 import ConnectButton from "./ConnectButton";
@@ -177,16 +177,10 @@ const BidsDisplay: FC<{ smileyId: number; duration: number }> = ({
                     (provider as ethers.providers.Web3Provider)?.getSigner()
                   );
 
-                  try {
-                    const tx = await contract.bid(smileyId, {
-                      value: bidValue,
-                    });
-                    toast.info("Transaction sent!");
-                    await tx.wait();
-                    toast.info("Transaction confirmed!");
-                  } catch (e) {
-                    toast.error("error");
-                  }
+                  const tx = await contract.bid(smileyId, {
+                    value: bidValue,
+                  });
+                  await wrapTransactionWithToast(tx);
                 }}
               >
                 BID
@@ -199,31 +193,41 @@ const BidsDisplay: FC<{ smileyId: number; duration: number }> = ({
         ) : (
           <>
             {address ? (
-              <button
-                className={`bg-lime-300 py-2 ${
-                  selected === -1 || selected === events.length - 1
-                    ? ""
-                    : "hidden"
-                }`}
-                onClick={async () => {
-                  const contract = new ethers.Contract(
-                    "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82",
-                    ABI,
-                    (provider as ethers.providers.Web3Provider)?.getSigner()
-                  );
+              <>
+                {" "}
+                <button
+                  className={`bg-lime-300 py-2 ${
+                    selected === -1 || selected === events.length - 1
+                      ? ""
+                      : "hidden"
+                  }`}
+                  onClick={async () => {
+                    const contract = new ethers.Contract(
+                      "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82",
+                      ABI,
+                      (provider as ethers.providers.Web3Provider)?.getSigner()
+                    );
 
-                  const tx = await contract.completeAuctionAndStartNew();
-                  await tx.wait();
-                }}
-              >
-                FINALIZE
-              </button>
+                    const tx = await contract.completeAuctionAndStartNew();
+                    await wrapTransactionWithToast(tx);
+                    location.reload();
+                  }}
+                >
+                  FINALIZE
+                </button>
+                <div
+                  className={`w-full text-center  ${
+                    selected === -1 || selected === events.length - 1
+                      ? ""
+                      : "hidden"
+                  }`}
+                >
+                  FINALIZE AND GET 3 VOTING POINTS
+                </div>
+              </>
             ) : (
               <ConnectButton />
             )}
-            <div className="w-full text-center">
-              FINALIZE AND GET 3 VOTING POINTS
-            </div>
           </>
         )}
       </div>

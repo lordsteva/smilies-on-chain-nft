@@ -9,7 +9,7 @@ const ConnectButton: FC<{}> = () => {
   const balance = ethers.utils.formatEther(state?.balance ?? 0);
 
   return (
-    <div className="flex justify-center">
+    <div className="flex flex-wrap justify-center gap-y-2">
       {loggedIn && (
         <div className="inline p-2 ml-1 bg-white rounded-md max-w-max">
           Address: {state.address}

@@ -52,9 +52,9 @@ const SmileyDisplay: FC<{
   if (loading) return <div>LOADING.....</div>;
 
   return (
-    <div className="flex flex-row justify-center w-full p-4 bg-blue-400">
-      <div className="flex items-start justify-center w-1/3">
-        <div className="flex flex-col gap-y-2 max-w-max">
+    <div className="flex flex-row flex-wrap-reverse justify-center w-full p-4 bg-blue-400 gap-x-2 gap-y-2">
+      <div className="flex items-start justify-center w-1/3 gap-x-2">
+        <div className="flex flex-col gap-y-2 max-w-max ">
           {attributes.map(
             ({ value, trait_type }: { trait_type: string; value: string }) => (
               <div key={trait_type} className="p-3 bg-white rounded-2xl">

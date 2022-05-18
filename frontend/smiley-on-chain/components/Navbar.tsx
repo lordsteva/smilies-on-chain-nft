@@ -5,7 +5,7 @@ import ConnectButton from "./ConnectButton";
 const Navbar: FC<{}> = () => {
   return (
     <div className="flex justify-center w-full bg-blue-400">
-      <div className="flex items-center justify-between w-full max-w-screen-xl p-4">
+      <div className="flex flex-wrap items-center justify-between w-full max-w-screen-xl p-4 gap-y-2">
         <div className="flex gap-x-1">
           <Link href="/">
             <button className="px-3 py-2 font-bold text-white bg-blue-600 hover:bg-blue-300">
