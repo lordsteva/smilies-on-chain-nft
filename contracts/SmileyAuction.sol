@@ -9,8 +9,6 @@ import {IERC721} from "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import {ISmileyAuction} from "./interfaces/ISmileyAuction.sol";
 import {ISmileyVotingToken} from "./interfaces/ISmileyVotingToken.sol";
 
-import {IWETH} from "./interfaces/IWETH.sol";
-
 contract SmileyAuction is ISmileyAuction, ReentrancyGuard, Ownable {
     ISmileyNFT public smileyNFT;
     ISmileyVotingToken public smileyVotingToken;
@@ -151,5 +149,6 @@ contract SmileyAuction is ISmileyAuction, ReentrancyGuard, Ownable {
 
     function safeTransferETH(address to, uint256 value) internal {
         (bool success, ) = to.call{value: value, gas: 30000}(new bytes(0));
+        require(success, "Transfer run out if gas");
     }
 }
