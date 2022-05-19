@@ -16,6 +16,4 @@ artifacts
 
 typechain-types/*
 
-abi
-
 addresses
