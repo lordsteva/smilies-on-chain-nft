@@ -43,7 +43,7 @@ const ProposalView: FC<{ proposal: any; index: number }> = ({
   const [{ provider, address }] = useWallet();
 
   const contract = new ethers.Contract(
-    "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
+    process.env.NEXT_PUBLIC_GOVERNOR_ADDRESS!,
     ABI,
     (provider as ethers.providers.Web3Provider)?.getSigner?.() ?? provider
   );

@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const fetchAuctions = useCallback(async () => {
     const contract = new ethers.Contract(
-      "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82",
+      process.env.NEXT_PUBLIC_AUCTION_ADDRESS!,
       ABI,
       provider
     );

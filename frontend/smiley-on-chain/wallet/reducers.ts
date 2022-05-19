@@ -5,7 +5,6 @@ export default function walletReducer(
   state: WalletState,
   action: WalletAction
 ): WalletState {
-  console.log(state, action);
   switch (action.type) {
     case "SET_ADDRESS":
       return { ...state, ...{ address: action.payload } };

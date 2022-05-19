@@ -16,7 +16,7 @@ const Home: NextPage = () => {
   const fetchSmiley = useCallback(
     async (display: number) => {
       const contract = new ethers.Contract(
-        "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+        process.env.NEXT_PUBLIC_NFT_ADDRESS!,
         ABI,
         provider
       );

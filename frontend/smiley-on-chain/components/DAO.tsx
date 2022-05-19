@@ -12,7 +12,7 @@ const DAO: FC = () => {
   const [{ provider, address }] = useWallet();
 
   const contract = new ethers.Contract(
-    "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
+    process.env.NEXT_PUBLIC_GOVERNOR_ADDRESS!,
     ABI,
     (provider as ethers.providers.Web3Provider)?.getSigner?.() ?? provider
   );
@@ -28,12 +28,10 @@ const DAO: FC = () => {
   const [proposals, setProposals] = useState<any>([]);
   const updateBalance = async () => {
     const blockNumber = await provider?.getBlockNumber();
-    console.log(blockNumber);
-
     const votes = await contract?.getVotes(address, blockNumber! - 1);
     setDelegated(votes.toNumber());
     const contractSmiley = new ethers.Contract(
-      "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+      process.env.NEXT_PUBLIC_VOTES_ADDRESS!,
       SMILEY_ABI,
       (provider as ethers.providers.Web3Provider)?.getSigner()
     );
@@ -138,7 +136,7 @@ const DAO: FC = () => {
                     }`}
                     onClick={async () => {
                       const contract = new ethers.Contract(
-                        "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+                        process.env.NEXT_PUBLIC_VOTES_ADDRESS!,
                         SMILEY_ABI,
                         (provider as ethers.providers.Web3Provider)?.getSigner()
                       );

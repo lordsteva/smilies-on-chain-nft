@@ -58,7 +58,6 @@ const CreateProposal: FC = () => {
       </div>
     );
   const err = errors.filter(Boolean).length > 0;
-  console.log({ errors });
   return (
     <div className="flex flex-col w-full max-w-xl px-5 py-3 bg-blue-400 border border-black">
       <span className="pb-2 text-xl underline">Description: </span>
@@ -111,7 +110,7 @@ const CreateProposal: FC = () => {
               });
 
               const contract = new ethers.Contract(
-                "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
+                process.env.NEXT_PUBLIC_GOVERNOR_ADDRESS!,
                 ABI,
                 (provider as ethers.providers.Web3Provider)?.getSigner()
               );

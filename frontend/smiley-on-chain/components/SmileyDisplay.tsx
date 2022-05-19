@@ -12,15 +12,13 @@ const SmileyDisplay: FC<{
 }> = ({ base64Data, duration, smileyId }) => {
   const [{ provider }] = useWallet();
   const [{ loading }, ,] = useAuctionEvents();
-  console.log(base64Data);
-
   const [attributes, setAttributes] = useState([]);
   const [imageUrl, setImageUrl] = useState("");
   const [points, setPoints] = useState(0);
 
   const fetchPoints = useCallback(async (smileyId: number) => {
     const contract = new ethers.Contract(
-      "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+      process.env.NEXT_PUBLIC_NFT_ADDRESS!,
       NFT_ABI,
       provider
     );
@@ -62,7 +60,9 @@ const SmileyDisplay: FC<{
               </div>
             )
           )}
-          <div className="p-3 bg-white rounded-2xl">Points: {points}</div>
+          <div className="p-3 font-bold text-white bg-blue-300 rounded-2xl">
+            Voting points: {points}
+          </div>
         </div>
       </div>
       <img className="inline max-w-lg" src={imageUrl} />

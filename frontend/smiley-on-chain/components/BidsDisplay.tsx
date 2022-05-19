@@ -1,5 +1,6 @@
 import { BigNumber, Contract, ethers } from "ethers";
 import { FC, useCallback, useEffect, useRef, useState } from "react";
+import { toast } from "react-toastify";
 import ABI from "../ABI/SmileyAuction.json";
 import { wrapTransactionWithToast } from "../toast";
 import { useWallet } from "../wallet/WalletContext";
@@ -49,7 +50,7 @@ const BidsDisplay: FC<{ smileyId: number; duration: number }> = ({
   useEffect(() => {
     setContract(
       new ethers.Contract(
-        "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82",
+        process.env.NEXT_PUBLIC_AUCTION_ADDRESS!,
         ABI,
         provider
       )
@@ -169,18 +170,23 @@ const BidsDisplay: FC<{ smileyId: number; duration: number }> = ({
             />
             {address ? (
               <button
-                className="bg-green-500"
+                className="py-2 text-lg font-bold bg-green-500 rounded-md"
                 onClick={async () => {
                   const contract = new ethers.Contract(
-                    "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82",
+                    process.env.NEXT_PUBLIC_AUCTION_ADDRESS!,
                     ABI,
                     (provider as ethers.providers.Web3Provider)?.getSigner()
                   );
 
-                  const tx = await contract.bid(smileyId, {
-                    value: bidValue,
-                  });
-                  await wrapTransactionWithToast(tx);
+                  try {
+                    const tx = await contract.bid(smileyId, {
+                      value: bidValue,
+                    });
+
+                    await wrapTransactionWithToast(tx);
+                  } catch (e: any) {
+                    toast.error(e?.data?.message ?? "Error");
+                  }
                 }}
               >
                 BID
@@ -203,7 +209,7 @@ const BidsDisplay: FC<{ smileyId: number; duration: number }> = ({
                   }`}
                   onClick={async () => {
                     const contract = new ethers.Contract(
-                      "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82",
+                      process.env.NEXT_PUBLIC_AUCTION_ADDRESS!,
                       ABI,
                       (provider as ethers.providers.Web3Provider)?.getSigner()
                     );
