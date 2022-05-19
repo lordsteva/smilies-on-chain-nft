@@ -25,6 +25,7 @@ export const deploySmiley: ActionType<any> = async (args, env) => {
       path.resolve(__dirname, `../addresses/nft-${env.network.name}.json`),
       JSON.stringify([contract.address])
     );
+    return contract.address;
   } catch (e) {
     console.error(e);
     process.exitCode = 1;

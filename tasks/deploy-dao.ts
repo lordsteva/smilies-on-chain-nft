@@ -72,6 +72,7 @@ export const deployDao: ActionType<any> = async (args, env) => {
     );
     await revokeTx.wait(1);
     // Guess what? Now, anything the timelock wants to do has to go through the governance process!
+    return smileyGovernor.address;
   } catch (e) {
     console.error(e);
     process.exitCode = 1;
