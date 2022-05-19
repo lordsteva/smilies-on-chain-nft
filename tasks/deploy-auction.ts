@@ -1,6 +1,5 @@
 import "@nomiclabs/hardhat-ethers";
 import fs from "fs";
-import { ethers } from "hardhat";
 import { task } from "hardhat/config";
 import { ActionType } from "hardhat/types";
 import path from "path";
@@ -22,7 +21,7 @@ export const deployAuction: ActionType<any> = async (args, env) => {
     const votesContract: string = JSON.parse(votesContractDataString)[0];
 
     const timelockContractData = fs.readFileSync(
-      path.resolve(__dirname, `../addresses/votes-${env.network.name}.json`)
+      path.resolve(__dirname, `../addresses/timelock-${env.network.name}.json`)
     );
     const timelockContractDataString = timelockContractData.toString();
     const timelockContract: string = JSON.parse(timelockContractDataString)[0];
@@ -31,7 +30,7 @@ export const deployAuction: ActionType<any> = async (args, env) => {
     const extend = env.network.name === "rinkeby" ? 30 * 60 : 30;
     // check this todo
     const minPrice =
-      env.network.name === "rinkeby" ? ethers.utils.parseEther("0.01") : 1;
+      env.network.name === "rinkeby" ? env.ethers.utils.parseEther("0.01") : 1;
 
     const bidInc = 5;
     const duration = env.network.name === "rinkeby" ? 4 * 60 * 60 : 600;
@@ -73,6 +72,7 @@ export const deployAuction: ActionType<any> = async (args, env) => {
       path.resolve(__dirname, `../addresses/auction-${env.network.name}.json`),
       JSON.stringify([contract.address])
     );
+    return contract.address;
   } catch (e) {
     console.error(e);
     process.exitCode = 1;
