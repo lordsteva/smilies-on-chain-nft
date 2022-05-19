@@ -3,94 +3,94 @@
     "value": "Default",
     "svg": "<circle cx=\"320\" cy=\"380\" r=\"100\" fill=\"#fff\"/><circle cx=\"320\" cy=\"380\" r=\"60\"/><circle cx=\"680\" cy=\"380\" r=\"100\" fill=\"#fff\"/><circle cx=\"680\" cy=\"380\" r=\"60\"/>",
     "points": 1,
-    "weight": 1
+    "weight": 10
   },
   {
     "value": "Green",
     "svg": "<circle cx=\"320\" cy=\"380\" r=\"100\" fill=\"#fff\"/><circle cx=\"320\" cy=\"380\" r=\"60\" fill=\"#282\"/><circle cx=\"680\" cy=\"380\" r=\"100\" fill=\"#fff\"/><circle fill=\"#282\" cx=\"680\" cy=\"380\" r=\"60\"/>",
-    "points": 1,
-    "weight": 1
+    "points": 3,
+    "weight": 9
   },
   {
     "value": "Red",
     "svg": "<circle cx=\"320\" cy=\"380\" r=\"100\" fill=\"#fff\"/><circle cx=\"320\" cy=\"380\" r=\"60\" fill=\"#822\"/><circle cx=\"680\" cy=\"380\" r=\"100\" fill=\"#fff\"/><circle fill=\"#822\" cx=\"680\" cy=\"380\" r=\"60\"/>",
-    "points": 1,
-    "weight": 1
+    "points": 3,
+    "weight": 9
   },
   {
     "value": "Gradient 1",
     "svg": "<linearGradient gradientTransform=\"rotate(90)\" xmlns=\"http://www.w3.org/2000/svg\" id=\"fas\" x1=\"400\" y1=\"0\" x2=\"355\" y2=\"0\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0\" stop-color=\"#34175c\"/><stop offset=\".167\" stop-color=\"#632177\"/><stop offset=\".333\" stop-color=\"#922d87\"/><stop offset=\".5\" stop-color=\"#ae3a78\"/><stop offset=\".667\" stop-color=\"#c94962\"/><stop offset=\".833\" stop-color=\"#e46e59\"/><stop offset=\"1\" stop-color=\"#ffb56b\"/></linearGradient><circle cx=\"320\" cy=\"380\" r=\"100\" fill=\"#fff\"/><circle cx=\"320\" cy=\"380\" r=\"60\" fill=\"url(#fas)\"/><circle cx=\"680\" cy=\"380\" r=\"100\" fill=\"#fff\"/><circle fill=\"url(#fas)\" cx=\"680\" cy=\"380\" r=\"60\"/>",
-    "points": 1,
-    "weight": 1
+    "points": 5,
+    "weight": 7
   },
   {
     "value": "Gradient 2",
     "svg": "<linearGradient gradientTransform=\"rotate(90)\" xmlns=\"http://www.w3.org/2000/svg\" id=\"fas\" x1=\"305\" y1=\"0\" x2=\"450\" y2=\"0\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0\" stop-color=\"#941721\"/><stop offset=\".167\" stop-color=\"#632177\"/><stop offset=\".333\" stop-color=\"#987842\"/><stop offset=\".5\" stop-color=\"#be3471\"/><stop offset=\".667\" stop-color=\"#c84929\"/><stop offset=\".833\" stop-color=\"#a41299\"/><stop offset=\"1\" stop-color=\"#00b59b\"/></linearGradient><circle cx=\"320\" cy=\"380\" r=\"100\" fill=\"#fff\"/><circle cx=\"320\" cy=\"380\" r=\"60\" fill=\"url(#fas)\"/><circle cx=\"680\" cy=\"380\" r=\"100\" fill=\"#fff\"/><circle fill=\"url(#fas)\" cx=\"680\" cy=\"380\" r=\"60\"/>",
-    "points": 1,
-    "weight": 1
+    "points": 5,
+    "weight": 7
   },
   {
     "value": "Gradient 3",
     "svg": "<linearGradient gradientTransform=\"rotate(90)\" xmlns=\"http://www.w3.org/2000/svg\" id=\"fas\" x1=\"250\" y1=\"0\" x2=\"423\" y2=\"0\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0\" stop-color=\"#c74550\"/><stop offset=\".091\" stop-color=\"#c8454c\"/><stop offset=\".182\" stop-color=\"#cc4a46\"/><stop offset=\".273\" stop-color=\"#d15c46\"/><stop offset=\".364\" stop-color=\"#d87547\"/><stop offset=\".455\" stop-color=\"#df9248\"/><stop offset=\".545\" stop-color=\"#e7b349\"/><stop offset=\".636\" stop-color=\"#eed549\"/><stop offset=\".727\" stop-color=\"#f4f54a\"/><stop offset=\".818\" stop-color=\"#e3fa4a\"/><stop offset=\".909\" stop-color=\"#d7fe4a\"/><stop offset=\"1\" stop-color=\"#d2ff4a\"/></linearGradient><circle cx=\"320\" cy=\"380\" r=\"100\" fill=\"#fff\"/><circle cx=\"320\" cy=\"380\" r=\"60\" fill=\"url(#fas)\"/><circle cx=\"680\" cy=\"380\" r=\"100\" fill=\"#fff\"/><circle fill=\"url(#fas)\" cx=\"680\" cy=\"380\" r=\"60\"/>",
-    "points": 1,
-    "weight": 1
+    "points": 5,
+    "weight": 7
   },
   {
     "value": "Oval 1",
     "svg": "<ellipse cx=\"320\" cy=\"380\" rx=\"100\" ry=\"60\" fill=\"#fff\"/><circle cx=\"320\" cy=\"380\" r=\"50\"/><ellipse cx=\"680\" cy=\"380\" rx=\"100\" ry=\"60\" fill=\"#fff\"/><circle cx=\"680\" cy=\"380\" r=\"50\"/>",
-    "points": 1,
-    "weight": 1
+    "points": 4,
+    "weight": 8
   },
 
   {
     "value": "Oval 2",
     "svg": "<ellipse cx=\"320\" cy=\"380\" rx=\"100\" ry=\"60\" fill=\"#fff\"/><circle fill=\"cyan\" cx=\"320\" cy=\"380\" r=\"50\"/><ellipse cx=\"680\" cy=\"380\" rx=\"100\" ry=\"60\" fill=\"#fff\"/><circle fill=\"cyan\" cx=\"680\" cy=\"380\" r=\"50\"/>",
-    "points": 1,
-    "weight": 1
+    "points": 4,
+    "weight": 8
   },
   {
     "value": "Oval 3",
     "svg": "<ellipse cx=\"320\" cy=\"380\" rx=\"100\" ry=\"60\" fill=\"#fff\"/><circle fill=\"125779\" cx=\"320\" cy=\"380\" r=\"50\"/><ellipse cx=\"680\" cy=\"380\" rx=\"100\" ry=\"60\" fill=\"#fff\"/><circle fill=\"125779\" cx=\"680\" cy=\"380\" r=\"50\"/>",
-    "points": 1,
-    "weight": 1
+    "points": 4,
+    "weight": 8
   },
 
   {
     "value": "Oval 4",
     "svg": "<ellipse cx=\"320\" cy=\"380\" rx=\"100\" ry=\"60\" fill=\"#fff\"/><circle fill=\"#00ccf8\" cx=\"320\" cy=\"380\" r=\"50\"/><ellipse cx=\"680\" cy=\"380\" rx=\"100\" ry=\"60\" fill=\"#fff\"/><circle fill=\"#00ccf8\" cx=\"680\" cy=\"380\" r=\"50\"/>",
-    "points": 1,
-    "weight": 1
+    "points": 4,
+    "weight": 8
   },
   {
     "value": "Oval 5",
     "svg": "<ellipse cx=\"320\" cy=\"380\" rx=\"100\" ry=\"60\" fill=\"#fff\"/><circle fill=\"#123123\" cx=\"320\" cy=\"380\" r=\"50\"/><ellipse cx=\"680\" cy=\"380\" rx=\"100\" ry=\"60\" fill=\"#fff\"/><circle fill=\"#123123\" cx=\"680\" cy=\"380\" r=\"50\"/>",
-    "points": 1,
-    "weight": 1
+    "points": 4,
+    "weight": 8
   },
 
   {
     "value": "Hetero 1",
     "svg": "<ellipse cx=\"320\" cy=\"380\" rx=\"100\" ry=\"60\" fill=\"#fff\"/><circle fill=\"red\" cx=\"320\" cy=\"380\" r=\"50\"/><ellipse cx=\"680\" cy=\"380\" rx=\"100\" ry=\"60\" fill=\"#fff\"/><circle fill=\"#64168\" cx=\"680\" cy=\"380\" r=\"50\"/>",
-    "points": 1,
-    "weight": 1
+    "points": 6,
+    "weight": 6
   },
 
   {
     "value": "Hetero 2",
     "svg": "<ellipse cx=\"320\" cy=\"380\" rx=\"100\" ry=\"60\" fill=\"#fff\"/><circle fill=\"blue\" cx=\"320\" cy=\"380\" r=\"50\"/><ellipse cx=\"680\" cy=\"380\" rx=\"100\" ry=\"60\" fill=\"#fff\"/><circle fill=\"green\" cx=\"680\" cy=\"380\" r=\"50\"/>",
-    "points": 1,
-    "weight": 1
+    "points": 6,
+    "weight": 6
   },
   {
     "value": "Hetero 3",
     "svg": "<circle cx=\"320\" cy=\"380\" r=\"100\" fill=\"#fff\"/><circle fill=\"#a5c12f\" cx=\"320\" cy=\"380\" r=\"60\"/><circle cx=\"680\" cy=\"380\" r=\"100\" fill=\"#fff\"/><circle fill=\"#f5a33c\" cx=\"680\" cy=\"380\" r=\"60\"/>",
-    "points": 1,
-    "weight": 1
+    "points": 6,
+    "weight": 6
   },
   {
     "value": "Hetero 4",
     "svg": "<circle cx=\"320\" cy=\"380\" r=\"100\" fill=\"#fff\"/><circle fill=\"#888\" cx=\"320\" cy=\"380\" r=\"60\"/><circle cx=\"680\" cy=\"380\" r=\"100\" fill=\"#fff\"/><circle fill=\"#5f113f\" cx=\"680\" cy=\"380\" r=\"60\"/>",
-    "points": 1,
-    "weight": 1
+    "points": 6,
+    "weight": 6
   }
 ]
