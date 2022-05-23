@@ -102,7 +102,9 @@ const CreateProposal: FC = () => {
             }`}
             onClick={async () => {
               const targets = transactions.map((t) => t.target);
-              const values = transactions.map((t) => t.value);
+              const values = transactions.map((t) =>
+                ethers.utils.parseEther(t.value)
+              );
               const calldatas = transactions.map((t, i) => {
                 const abi = t.ABI || ["function transfer()"];
                 const iface = new ethers.utils.Interface(abi);
@@ -114,14 +116,21 @@ const CreateProposal: FC = () => {
                 ABI,
                 (provider as ethers.providers.Web3Provider)?.getSigner()
               );
+
+              const transactionData = targets.map((t, i) => {
+                const f = transactions[i].function.split("(")[0];
+                const c = calldata[i].join(", ");
+                return `${t}.${f}(${c}); (${transactions[i].value} ETH)`;
+              });
+
               const proposeTx = await contract.propose(
                 targets,
                 values,
                 calldatas,
-                description
+                `${description}\n\nTransactions:\n${transactionData.join("\n")}`
               );
               await wrapTransactionWithToast(proposeTx);
-              location.reload();
+              location.href = "/dao";
             }}
           >
             Propose

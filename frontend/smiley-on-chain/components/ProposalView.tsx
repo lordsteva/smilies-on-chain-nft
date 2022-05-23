@@ -1,6 +1,7 @@
 import { ethers } from "ethers";
 import { FC } from "react";
 import ABI from "../ABI/SmileyGovernor.json";
+import { wrapTransactionWithToast } from "../toast";
 import { useWallet } from "../wallet/WalletContext";
 
 const ProposalState = [
@@ -54,14 +55,22 @@ const ProposalView: FC<{ proposal: any; index: number }> = ({
         className="justify-center px-2 py-3 border border-black rounded-lg gap-x-2"
         key={proposalId}
       >
-        <div className="flex flex-wrap justify-between px-2 py-2 text-lg bg-blue-300 rounded-md gap-x-5">
+        <div className="flex flex-col flex-wrap justify-between px-2 py-2 text-lg bg-blue-300 rounded-md gap-x-5">
           <div className="text-xl font-bold ">Proposal #{index}</div>
-          <div>By: {proposer}</div>
+          <div className="overflow-auto">By: {proposer}</div>
           <div className="font-semibold"> {ProposalState[state]}</div>
         </div>
 
         <div className="p-2 bg-blue-200">
-          <div className="text-xl underline ">Description</div> {description}
+          <div className="text-xl underline ">Description</div>{" "}
+          {description.split("\n").map((t: string, i: number) => (
+            <div
+              className={` ${t === "Transactions:" ? "underline" : ""}`}
+              key={i}
+            >
+              {t}
+            </div>
+          ))}
         </div>
 
         <div className="p-2">
@@ -83,8 +92,10 @@ const ProposalView: FC<{ proposal: any; index: number }> = ({
                     <button
                       className={`px-3 shrink-0 grow py-2 text-white ${colors[idx]}`}
                       key={idx}
-                      onClick={() => {
-                        contract.castVote(proposalId, idx);
+                      onClick={async () => {
+                        const tx = await contract.castVote(proposalId, idx);
+                        await wrapTransactionWithToast(tx);
+                        location.reload();
                       }}
                     >
                       {option}
@@ -113,7 +124,6 @@ const ProposalView: FC<{ proposal: any; index: number }> = ({
               contract.queue(
                 targets,
                 values,
-
                 calldatas,
                 ethers.utils.id(description)
               );

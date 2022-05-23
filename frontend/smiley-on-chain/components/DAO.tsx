@@ -54,10 +54,14 @@ const DAO: FC = () => {
             targets,
             proposalId,
             startBlock,
+
             endBlock,
             3: values,
+            ...rest
           },
         }: any) => {
+          console.log(rest);
+
           const state = await contract.state(proposalId);
 
           const { againstVotes, abstainVotes, forVotes } =
@@ -80,6 +84,7 @@ const DAO: FC = () => {
             startBlock: startBlock.toString(),
             endBlock: endBlock.toString(),
             state,
+
             calldatas,
             values: values.map((v: any) => v.toString()),
             targets,
@@ -164,15 +169,17 @@ const DAO: FC = () => {
           Create a proposal
         </button>
       </Link>
-      <div className="py-4">
+      <div className="flex flex-col py-4 gap-y-2">
         {proposals.length === 0 && (
           <div className="w-full px-5 py-4 text-xl font-bold text-center ">
             No proposals....
           </div>
         )}
-        {proposals.map((proposal: any, index: number) => (
-          <ProposalView key={index} proposal={proposal} index={index} />
-        ))}
+        {proposals
+          .map((proposal: any, index: number) => (
+            <ProposalView key={index} proposal={proposal} index={1 + index} />
+          ))
+          .reverse()}
       </div>
     </>
   );
