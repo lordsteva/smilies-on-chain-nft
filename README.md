@@ -2,9 +2,10 @@
 
 An on-chain NFT project where a new Smiley is minted every day and is available on an auction! Every buyer receives Smiley Voting Tokens which makes them a member of the Smiley DAO where all collected ETH is stored. 
 
-The project is deployed [HERE](https://earnest-naiad-422c27.netlify.app/)
+## The project is deployed [HERE](https://earnest-naiad-422c27.netlify.app/)
 <details>
-  <summary>Rinkeby addresses:</summary>
+  <summary><h3>Rinkeby contract addresses:</h3></summary>
+
 - Smiley Auction: [0x25195989c1c09d5c1f98c6cbb44cb2faee3ddd59](https://rinkeby.etherscan.io/address/0x25195989c1c09d5c1f98c6cbb44cb2faee3ddd59#code)
 - Smiley Governor: [0xc3616fc4deb35e272827fb1795f1a11bbe39a6bc](https://rinkeby.etherscan.io/address/0xc3616fc4deb35e272827fb1795f1a11bbe39a6bc#code)
 - Smiley NFT: [0x6713537662e09fb4cefb1d14756e6997b873856b](https://rinkeby.etherscan.io/address/0x6713537662e09fb4cefb1d14756e6997b873856b#code)
