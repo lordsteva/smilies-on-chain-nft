@@ -18,7 +18,7 @@ const initOnboard = (subscriptions: any) =>
   Onboard({
     hideBranding: true,
     darkMode: true,
-    networkId: Number.parseInt("1337"),
+    networkId: process.env.NEXT_PUBLIC_NETWORK === "rinkeby" ? 4 : 1337,
     subscriptions,
     walletSelect: { wallets },
     walletCheck: [
