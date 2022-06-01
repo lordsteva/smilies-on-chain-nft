@@ -27,13 +27,13 @@ export const deployAuction: ActionType<any> = async (args, env) => {
     const timelockContract: string = JSON.parse(timelockContractDataString)[0];
 
     // todo update values
-    const extend = env.network.name === "rinkeby" ? 30 * 60 : 30;
+    const extend = env.network.name === "rinkeby" ? 10 * 60 : 30;
     // check this todo
     const minPrice =
       env.network.name === "rinkeby" ? env.ethers.utils.parseEther("0.01") : 1;
 
     const bidInc = 5;
-    const duration = env.network.name === "rinkeby" ? 4 * 60 * 60 : 600;
+    const duration = env.network.name === "rinkeby" ? 24 * 60 * 60 : 600;
 
     const contract = await SmileyAuction.deploy(
       nftContract,

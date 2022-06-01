@@ -48,11 +48,11 @@ export const deployAttributes: ActionType<any> = async (args, env) => {
       "Hat",
       "Moustache",
     ];
-    const promises = attributes.map((attribute) => {
-      return deploy({ attribute }, env);
-    });
-
-    const contracts = await Promise.all(promises);
+    const contracts = [];
+    for (const attribute of attributes) {
+      const name = await deploy({ attribute }, env);
+      contracts.push(name);
+    }
 
     try {
       fs.writeFileSync(

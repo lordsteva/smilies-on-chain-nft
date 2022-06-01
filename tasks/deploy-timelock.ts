@@ -9,8 +9,7 @@ export const deployTimelock: ActionType<any> = async (args, env) => {
     const ContractDeployer = await env.ethers.getContractFactory("TimeLock");
 
     const contract = await ContractDeployer.deploy(
-      // 200000000000,
-      1,
+      env.network.name === "rinkeby" ? 4 * 60 * 60 : 0,
       [],
       []
     );

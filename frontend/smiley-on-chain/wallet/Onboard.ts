@@ -59,10 +59,14 @@ export function getOnboard(
           type: "SET_PROVIDER",
           payload: wallet?.provider
             ? new ethers.providers.Web3Provider(wallet.provider)
-            : new ethers.providers.JsonRpcProvider("http://localhost:8545", {
-                chainId: 1337,
-                name: "localhost",
-              }),
+            : new ethers.providers.JsonRpcProvider(
+                process.env.NEXT_PUBLIC_NODE_URL,
+                {
+                  chainId:
+                    process.env.NEXT_PUBLIC_NETWORK === "rinkeby" ? 4 : 1337,
+                  name: process.env.NEXT_PUBLIC_NETWORK ?? "localhost",
+                }
+              ),
         });
 
         dispatch({

@@ -21,15 +21,21 @@ export const deployDao: ActionType<any> = async (args, env) => {
     );
     const timelockString = timelockData.toString();
     const timelockContract: string = JSON.parse(timelockString)[0];
-    // todo update values
+
+    // 2 days for voting
+    const period =
+      env.network.name === "rinkeby" ? Math.floor((2 * 24 * 60 * 60) / 15) : 4;
+    // 1 day delay
+    const delay =
+      env.network.name === "rinkeby" ? Math.floor((24 * 60 * 60) / 15) : 1;
 
     const smileyGovernor = await SmileyGovernor.deploy(
       votesContract,
       timelockContract,
-      // BLOCKS
       5,
-      4,
-      1
+      // BLOCKS
+      period,
+      delay
     );
 
     await smileyGovernor.deployed();

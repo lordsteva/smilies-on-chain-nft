@@ -23,6 +23,12 @@ task("deploy", "Deploys all contracts").setAction(async (args, env) => {
 NEXT_PUBLIC_GOVERNOR_ADDRESS=${governor}
 NEXT_PUBLIC_VOTES_ADDRESS=${votes}
 NEXT_PUBLIC_NFT_ADDRESS=${nft}
+NEXT_PUBLIC_NETWORK=${env.network.name}
+NEXT_PUBLIC_NODE_URL=${
+      env.network.name === "rinkeby"
+        ? "https://rinkeby.infura.io/v3/a29f0338b6ac4815809d580624620c84"
+        : "http://localhost:8545"
+    }
 `;
 
     fs.writeFileSync(
